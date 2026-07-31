@@ -6,54 +6,42 @@
 
     let calc = new CalculadoraModel()
 
-    let obj = {
-        valor: '0',
-        include(numero) {
-            return {
-                valor: this.valor = `${this.valor + numero}`,
-                include: this.include
-            }
-        }
-    }
-
-    const numeroDigitado = (numero) => {
-        obj = obj.include(numero)
-    }
-
-    const limparTela = () => {
-        obj.valor = '0'
-    }
+    const numeroDigitado = num => calc = calc.numeroDigitado(num)
+    const operacaoDigitada = (proximaOperacao) => calc = calc.operacaoDigitada(proximaOperacao)
+    const pontoDigitado = () => calc = calc.pontoDigitado()
+    const limpar = () => calc = calc.limpar()
+    const calcular = () => calc = calc.calcular()
 
 </script>
 <div class="calculadora">
     <Tela valor = {calc.valor}/>
 
     <Linha>
-        <Botao texto="AC" destaque triplo onClick={limparTela}/>
-        <Botao texto="/" operacao/>
+        <Botao texto="AC" destaque triplo onClick={limpar}/>
+        <Botao texto="/" operacao onClick={operacaoDigitada}   />
     </Linha>
     <Linha>
         <Botao texto="7" onClick={numeroDigitado}/>
         <Botao texto="8" onClick={numeroDigitado}/>
         <Botao texto="9" onClick={numeroDigitado}/>
-        <Botao texto="*" operacao onClick={numeroDigitado}/>
+        <Botao texto="*" operacao onClick={operacaoDigitada}/>
     </Linha>
     <Linha>
         <Botao texto="4" onClick={numeroDigitado}/>
         <Botao texto="5" onClick={numeroDigitado}/>
         <Botao texto="6" onClick={numeroDigitado}/>
-        <Botao texto="+" operacao onClick={numeroDigitado}/>
+        <Botao texto="+" operacao onClick={operacaoDigitada}/>
     </Linha>
     <Linha>
         <Botao texto="1" onClick={numeroDigitado}/>
         <Botao texto="2" onClick={numeroDigitado}/>
         <Botao texto="3" onClick={numeroDigitado}/>
-        <Botao texto="-" operacao onClick={numeroDigitado}/>
+        <Botao texto="-" operacao onClick={operacaoDigitada}/>
     </Linha>
     <Linha>
         <Botao texto="0" duplo onClick={numeroDigitado}/>
-        <Botao texto="." onClick={numeroDigitado}/>
-        <Botao texto="=" destaque/>
+        <Botao texto="." onClick={pontoDigitado}/>
+        <Botao texto="=" destaque onClick={calcular}/>
     </Linha>
 
    
